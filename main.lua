@@ -12,10 +12,10 @@ local center_x = display.contentCenterX
 local center_y = display.contentCenterY
 -- Puntaje
 local score = 0
-local scoreText = display.newText( score, center_x, 20, native.systemFont, 40)
+local scoreText = display.newText( score, center_x, 60, native.systemFont, 40)
 -- Ubicación de personaje
-local player_x = display.actualContentWidth-250
-local player_y = display.actualContentHeight-80
+local player_x = display.actualContentWidth-200
+local player_y = display.actualContentHeight-35
 local player_size = 80
 -- Punto de spawn
 local spawn_x = 40
@@ -34,7 +34,7 @@ background.x = center_x
 background.y = center_y
 -- Plataforma inferior
 local platform = display.newRect( mainGroup, center_x, center_y, display.actualContentWidth, 80 )
-platform.y = display.actualContentHeight
+platform.y = display.actualContentHeight+45
 platform.isVisible = false
 -- Timer utilizado durante la partida
 local game_timer
@@ -147,9 +147,10 @@ local function contadorInicial( )
 end
 
 -- Delay antes de comenzar
-timer.performWithDelay( 1000, contadorInicial, 5)
+local initialDelay = timer.performWithDelay( 1000, contadorInicial, 5)
 
 function game_start( )
+	timer.cancel( initialDelay )
 	game_timer = timer.performWithDelay( 800, launchBall , 20 )
 end
 
@@ -159,7 +160,6 @@ function game_dead(  )
 	display.remove( player_no_comer )
 	local player_mal_comer = display.newImageRect( mainGroup, "/images/mal_comer.png", player_size, player_size )
 	player_mal_comer.x, player_mal_comer.y = player_x, player_y
-	physics.addBody( player_mal_comer, "static" )
 end
 
 
