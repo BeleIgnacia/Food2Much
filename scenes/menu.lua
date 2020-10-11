@@ -13,6 +13,23 @@ function scene:create( )
 		color1 = {0.2, 0.45, 0.8},
 		color2 = {0.7, 0.8, 1}
 	}
+	local logo = display.newImageRect( group, 'images/logo.png', 220, 50 )
+	logo.x = 140
+	logo.y = 100
+	local player = display.newImageRect( group, 'images/mal_comer.png', 80, 80 )
+	player.x = 120
+	player.y = 200
+	local reverse = 0
+	local function rotatePlayer( )
+		if ( reverse == 0 ) then
+        	reverse = 1
+        	transition.to( player, { rotation=-30, time=800, transition=easing.inOutCubic } )
+	    else
+        	reverse = 0
+        	transition.to( player, { rotation=30, time=800, transition=easing.inOutCubic } )
+    	end
+	end
+	timer.performWithDelay( 600, rotatePlayer , 0 )
 	local btnGroup = display.newGroup( )
 	btnGroup.x, btnGroup.y = _G.center_x, _G.center_y
 	group:insert( btnGroup )
