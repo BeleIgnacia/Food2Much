@@ -133,6 +133,7 @@ function gameDead(  )
 	-- Muestra el sprite de mal comer
 	local player_mal_comer = display.newImageRect( mainGroup, "/images/mal_comer.png", player_size, player_size )
 	player_mal_comer.x, player_mal_comer.y = player_x, player_y
+<<<<<<< HEAD
 	-- Luego de 2 segundos llama a game_over
 	timer.performWithDelay( 2000, gameOver )
 end
@@ -143,17 +144,33 @@ function gameOver( )
 	mainGroup:removeSelf( )
 	uiGroup:removeSelf( )
 	-- Reinstancia los grupos
+=======
+	timer.performWithDelay( 2000, game_over )
+end
+
+function game_over( )
+	-- Limpieza de pantalla
+	backGroup:removeSelf( )
+	mainGroup:removeSelf( )
+	uiGroup:removeSelf( )
+>>>>>>> 9bab040cae42d68a42db4e7554e07082472ad698
 	backGroup = display.newGroup( )
 	mainGroup = display.newGroup( )
 	uiGroup = display.newGroup( )
 	-- Fondo
 	background = display.newRect( backGroup, 0, 0, display_w, display_h )
+<<<<<<< HEAD
 	background.x, background.y = center_x, center_y
+=======
+	background.x = center_x
+	background.y = center_y
+>>>>>>> 9bab040cae42d68a42db4e7554e07082472ad698
 	background.fill = {
 		type = 'gradient',
 		color1 = {0.2, 0.45, 0.8},
 		color2 = {0.7, 0.8, 1}
 	}
+<<<<<<< HEAD
 	-- Imagen de game over
 	local player_gameOver = display.newImageRect( mainGroup, "/images/gameover_face.png", player_size+60, player_size+60 )
 	player_gameOver.x, player_gameOver.y = center_x, center_y
@@ -182,6 +199,14 @@ function gameVictory( )
 	-- Texto de victoria
 	local gameVictoryText = display.newText( uiGroup, "Victory", center_x, 60, "/fonts/unbutton.ttf", 40 )
 	gameVictoryText:setFillColor( 0, 0, 0 )
+=======
+	-- Rostro infeliz
+	player_gameover = display.newImageRect( mainGroup, "/images/gameover_face.png", player_size+50, player_size+50 )
+	player_gameover.x, player_gameover.y = center_x, center_y
+	-- Texto de gameover
+	gameoverText = display.newText( uiGroup, "Game Over!", center_x, 60, "/fonts/unbutton.ttf", 40 )
+	gameoverText:setFillColor( 0, 0, 0 )
+>>>>>>> 9bab040cae42d68a42db4e7554e07082472ad698
 end
 
 -- Scene
@@ -195,12 +220,17 @@ function scene:create( )
 	physics.start()
 	-- Puntaje
 	score = 0
+<<<<<<< HEAD
 	scoreText = display.newText( uiGroup, score, center_x, 60, "/fonts/unbutton.ttf", 40 )
 	scoreText:setFillColor( 0, 0, 0 )
 	-- Cantidad de lanzamientos
 	launchMaxCount = 20
 	-- Contador de lanzamientos
 	launchCount = 0
+=======
+	scoreText = display.newText( score, center_x, 60, "fonts/unbutton.ttf", 40)
+	scoreText:setFillColor( 0, 0, 0 )
+>>>>>>> 9bab040cae42d68a42db4e7554e07082472ad698
 	-- Ubicación de personaje
 	player_x = display.actualContentWidth-200
 	player_y = display.actualContentHeight-35
@@ -234,7 +264,11 @@ function scene:create( )
 	physics.addBody( player_comer, "static" )
 	-- Delay antes de comenzar
 	time = 4
+<<<<<<< HEAD
 	timeText = display.newText( time, center_x, center_y-20, "/fonts/unbutton.ttf", 100)
+=======
+	timeText = display.newText( time, center_x, center_y-20, "fonts/unbutton.ttf", 100)
+>>>>>>> 9bab040cae42d68a42db4e7554e07082472ad698
 	timeText:setFillColor( 0, 0, 0 )
 	initialDelay = timer.performWithDelay( 1000, contadorInicial, 5)
 end
