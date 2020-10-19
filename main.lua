@@ -1,10 +1,10 @@
 system.activate( 'multitouch' )
 
 -- Variables globales
-_G.display_w = display.contentWidth
-_G.display_h = display.contentHeight
-_G.center_x = display.contentCenterX
-_G.center_y = display.contentCenterY
+display_w = display.contentWidth
+display_h = display.contentHeight
+center_x = display.contentCenterX
+center_y = display.contentCenterY
 
 local composer = require('composer')
 composer.recycleOnSceneChange = true

@@ -5,9 +5,9 @@ local scene = composer.newScene( )
 
 function scene:create( )
 	local group = self.view
-	local background = display.newRect( group, 0, 0, _G.display_w, _G.display_h )
-	background.x = _G.center_x
-	background.y = _G.center_y
+	local background = display.newRect( group, 0, 0, display_w, display_h )
+	background.x = center_x
+	background.y = center_y
 	background.fill = {
 		type = 'gradient',
 		color1 = {0.2, 0.45, 0.8},
@@ -31,7 +31,7 @@ function scene:create( )
 	end
 	timer.performWithDelay( 600, rotatePlayer , 0 )
 	local btnGroup = display.newGroup( )
-	btnGroup.x, btnGroup.y = _G.center_x, _G.center_y
+	btnGroup.x, btnGroup.y = center_x, center_y
 	group:insert( btnGroup )
 
 	self.btnPlay = widget.newButton( {
