@@ -124,6 +124,32 @@ function game_dead(  )
 	display.remove( player_no_comer )
 	local player_mal_comer = display.newImageRect( mainGroup, "/images/mal_comer.png", player_size, player_size )
 	player_mal_comer.x, player_mal_comer.y = player_x, player_y
+	timer.performWithDelay( 2000, game_over )
+end
+
+function game_over( )
+	-- Limpieza de pantalla
+	backGroup:removeSelf( )
+	mainGroup:removeSelf( )
+	uiGroup:removeSelf( )
+	backGroup = display.newGroup( )
+	mainGroup = display.newGroup( )
+	uiGroup = display.newGroup( )
+	-- Fondo
+	background = display.newRect( backGroup, 0, 0, display_w, display_h )
+	background.x = center_x
+	background.y = center_y
+	background.fill = {
+		type = 'gradient',
+		color1 = {0.2, 0.45, 0.8},
+		color2 = {0.7, 0.8, 1}
+	}
+	-- Rostro infeliz
+	player_gameover = display.newImageRect( mainGroup, "/images/gameover_face.png", player_size+50, player_size+50 )
+	player_gameover.x, player_gameover.y = center_x, center_y
+	-- Texto de gameover
+	gameoverText = display.newText( uiGroup, "Game Over!", center_x, 60, "/fonts/unbutton.ttf", 40 )
+	gameoverText:setFillColor( 0, 0, 0 )
 end
 
 -- Scene
@@ -137,7 +163,8 @@ function scene:create( )
 	physics.start()
 	-- Puntaje
 	score = 0
-	scoreText = display.newText( score, center_x, 60, native.systemFont, 40)
+	scoreText = display.newText( score, center_x, 60, "fonts/unbutton.ttf", 40)
+	scoreText:setFillColor( 0, 0, 0 )
 	-- Ubicación de personaje
 	player_x = display.actualContentWidth-200
 	player_y = display.actualContentHeight-35
@@ -171,7 +198,8 @@ function scene:create( )
 	physics.addBody( player_comer, "static" )
 	-- Delay antes de comenzar
 	time = 4
-	timeText = display.newText( time, center_x, center_y, native.systemFont, 100)
+	timeText = display.newText( time, center_x, center_y-20, "fonts/unbutton.ttf", 100)
+	timeText:setFillColor( 0, 0, 0 )
 	initialDelay = timer.performWithDelay( 1000, contadorInicial, 5)
 end
 
