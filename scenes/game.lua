@@ -1,5 +1,6 @@
 local composer = require('composer')
-local physics = require( "physics" )
+local physics = require( 'physics' )
+local widget = require('widget')
 
 local scene = composer.newScene( )
 
@@ -164,6 +165,19 @@ function gameOver( )
 	-- Texto de game over
 	local gameOverText = display.newText( uiGroup, "Game Over", center_x, 60, "/fonts/unbutton.ttf", 40 )
 	gameOverText:setFillColor( 0, 0, 0 )
+	-- Btn de reinicio
+	local btnReset = widget.newButton( {
+		defaultFile = 'images/btn_reset.png',
+		overFile = 'images/btn_reset_press.png',
+		width = 48,
+		height = 48,
+		x = center_x,
+		y = center_y+100,
+		onRelease = function( )
+			composer.removeScene( 'scenes.game' )
+			composer.gotoScene('scenes.game', {time = 500, effect = 'slideLeft'})
+		end
+	} )
 end
 
 function gameVictory( )
@@ -189,6 +203,19 @@ function gameVictory( )
 	-- Imagen de victoria
 	local player_victory = display.newImageRect( mainGroup, "images/victory.png", player_size+60, player_size+60 )
 	player_victory.x, player_victory.y = center_x, center_y
+	-- Btn de reinicio
+	local btnReset = widget.newButton( {
+		defaultFile = 'images/btn_reset.png',
+		overFile = 'images/btn_reset_press.png',
+		width = 48,
+		height = 48,
+		x = center_x,
+		y = center_y+100,
+		onRelease = function( )
+			composer.removeScene( 'scenes.game' )
+			composer.gotoScene('scenes.game', {time = 500, effect = 'slideLeft'})
+		end
+	} )
 end
 
 -- Scene
@@ -246,26 +273,6 @@ function scene:create( )
 	initialDelay = timer.performWithDelay( 1000, contadorInicial, 5)
 end
 
-function scene:show(event)
-
-end
-
-function scene:eachFrame()
-
-end
-
-function scene:setIsPaused(isPaused)
-
-end
-
-function scene:endLevelCheck()
-
-end
-
-function scene:createTouchRect(params)
-
-end
-
 function scene:gotoPreviousScene()
 	native.showAlert('Alerta', 'Realmente desea salir de este nivel?', {'Yes', 'Cancel'}, function(event)
 		if event.action == 'clicked' and event.index == 1 then
@@ -279,7 +286,5 @@ function scene:hide( event )
 end
 
 scene:addEventListener( 'create' )
-scene:addEventListener( 'show' )
-scene:addEventListener( 'hide' )
 
 return scene
