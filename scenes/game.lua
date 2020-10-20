@@ -26,6 +26,8 @@ local launchCount
 local initialDelay
 local timeText
 
+local foods = {"images/Peach.png", "images/Tomato.png", "images/AppleRed.png", "images/Orange.png", "images/Tomato.png", "images/Carrot.png"}
+
 -- Utils
 local function circleSwap( event )
 	if (mainGroup[1].isVisible == true) then
@@ -45,7 +47,8 @@ local function launchBall( )
 	local ball
 	-- Si es mayor a 2 genera una blanca
 	if (rand > 2 ) then
-		ball = display.newImageRect( mainGroup, "/images/meat.png", player_size/2, player_size/2 )
+		local randomFoodIndex = math.random(1, #foods)
+		ball = display.newImageRect( mainGroup, foods[randomFoodIndex], player_size/2, player_size/2 )
 		ball.myName = "white"
 	else
 		ball = display.newImageRect( mainGroup, "/images/bomb.png", player_size/2, player_size/2 )
