@@ -76,6 +76,7 @@ local function launchBall( )
 			y=player_y 
 		} )
 	end
+	-- Luego del ultimo lanzamiento llama a gameVictory
 	if (launchCount == launchMaxCount) then
 		timer.performWithDelay( 2000, gameVictory )
 	end
@@ -182,6 +183,9 @@ function gameVictory( )
 	-- Texto de victoria
 	local gameVictoryText = display.newText( uiGroup, "Victory", center_x, 60, "/fonts/unbutton.ttf", 40 )
 	gameVictoryText:setFillColor( 0, 0, 0 )
+	-- Imagen de victoria
+	local player_victory = display.newImageRect( mainGroup, "images/victory.png", player_size+60, player_size+60 )
+	player_victory.x, player_victory.y = center_x, center_y
 end
 
 -- Scene
