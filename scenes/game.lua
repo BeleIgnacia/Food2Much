@@ -52,7 +52,7 @@ local function launchBall( )
 		ball = display.newImageRect( mainGroup, foods[randomFoodIndex], player_size/2, player_size/2 )
 		ball.myName = "white"
 	else
-		ball = display.newImageRect( mainGroup, "/images/bomb.png", player_size/2, player_size/2 )
+		ball = display.newImageRect( mainGroup, "images/bomb.png", player_size/2, player_size/2 )
 		ball.myName = "gold"
 	end
 	ball.x, ball.y = spawn_x, spawn_y
@@ -136,7 +136,7 @@ function gameDead(  )
 	display.remove( player_comer )
 	display.remove( player_no_comer )
 	-- Muestra el sprite de mal comer
-	local player_mal_comer = display.newImageRect( mainGroup, "/images/mal_comer.png", player_size, player_size )
+	local player_mal_comer = display.newImageRect( mainGroup, "images/mal_comer.png", player_size, player_size )
 	player_mal_comer.x, player_mal_comer.y = player_x, player_y
 	-- Luego de 2 segundos llama a game_over
 	timer.performWithDelay( 2000, gameOver )
@@ -160,10 +160,10 @@ function gameOver( )
 		color2 = {0.7, 0.8, 1}
 	}
 	-- Imagen de game over
-	local player_gameOver = display.newImageRect( mainGroup, "/images/gameover_face.png", player_size+60, player_size+60 )
+	local player_gameOver = display.newImageRect( mainGroup, "images/gameover_face.png", player_size+60, player_size+60 )
 	player_gameOver.x, player_gameOver.y = center_x, center_y
 	-- Texto de game over
-	local gameOverText = display.newText( uiGroup, "Game Over", center_x, 60, "/fonts/unbutton.ttf", 40 )
+	local gameOverText = display.newText( uiGroup, "Game Over", center_x, 60, "fonts/unbutton.ttf", 40 )
 	gameOverText:setFillColor( 0, 0, 0 )
 	-- Btn de reinicio
 	local btnReset = widget.newButton( {
@@ -198,7 +198,7 @@ function gameVictory( )
 		color2 = {0.7, 0.8, 1}
 	}
 	-- Texto de victoria
-	local gameVictoryText = display.newText( uiGroup, "Victory", center_x, 60, "/fonts/unbutton.ttf", 40 )
+	local gameVictoryText = display.newText( uiGroup, "Victory", center_x, 60, "fonts/unbutton.ttf", 40 )
 	gameVictoryText:setFillColor( 0, 0, 0 )
 	-- Imagen de victoria
 	local player_victory = display.newImageRect( mainGroup, "images/victory.png", player_size+60, player_size+60 )
@@ -229,7 +229,7 @@ function scene:create( )
 	physics.start()
 	-- Puntaje
 	score = 0
-	scoreText = display.newText( uiGroup, score, center_x, 60, "/fonts/unbutton.ttf", 40 )
+	scoreText = display.newText( uiGroup, score, center_x, 60, "fonts/unbutton.ttf", 40 )
 	scoreText:setFillColor( 0, 0, 0 )
 	-- Cantidad de lanzamientos
 	launchMaxCount = 20
@@ -243,15 +243,15 @@ function scene:create( )
 	spawn_x = 40
 	spawn_y = 90
 	-- Imagenes para swapear personaje
-	player_no_comer = display.newImageRect( mainGroup, "/images/no_comer.png", player_size, player_size )
+	player_no_comer = display.newImageRect( mainGroup, "images/no_comer.png", player_size, player_size )
 	player_no_comer.x = player_x
 	player_no_comer.y = player_y
-	player_comer = display.newImageRect( mainGroup, "/images/comer.png", player_size, player_size )
+	player_comer = display.newImageRect( mainGroup, "images/comer.png", player_size, player_size )
 	player_comer.x = player_x
 	player_comer.y = player_y
 	player_comer.isVisible = false
 	-- Fondo
-	background = display.newImageRect( backGroup, "/images/background.png", display.contentWidth, display.contentHeight+120 )
+	background = display.newImageRect( backGroup, "images/background.png", display.contentWidth, display.contentHeight+120 )
 	background.x = center_x
 	background.y = center_y
 	-- Plataforma inferior
@@ -268,7 +268,7 @@ function scene:create( )
 	physics.addBody( player_comer, "static" )
 	-- Delay antes de comenzar
 	time = 4
-	timeText = display.newText( time, center_x, center_y-20, "/fonts/unbutton.ttf", 100)
+	timeText = display.newText( time, center_x, center_y-20, "fonts/unbutton.ttf", 100)
 	timeText:setFillColor( 0, 0, 0 )
 	initialDelay = timer.performWithDelay( 1000, contadorInicial, 5)
 end
