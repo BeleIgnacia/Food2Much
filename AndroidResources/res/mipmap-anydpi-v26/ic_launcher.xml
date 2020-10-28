@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Referencia el color de fondo definido en values.xml -->
     <background android:drawable="@color/ic_launcher_background"/>
+    <!-- Referencia el PNG que se despliega sobre el fondo -->
     <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
 </adaptive-icon>
